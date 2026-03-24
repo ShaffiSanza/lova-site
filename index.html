@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lova — Compliance Intelligence</title>
+<title>Lova — Finn ut hva du mangler før Datatilsynet gjør det</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Mono:wght@300;400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -86,12 +86,12 @@
     background: linear-gradient(135deg, transparent 0%, var(--paper-warm) 100%);
     z-index: 0;
   }
-  .hero-content { position: relative; z-index: 1; max-width: 680px; }
+  .hero-content { position: relative; z-index: 1; max-width: 720px; }
   .hero-eyebrow {
     font-family: var(--mono);
     font-size: 11px;
     letter-spacing: 0.2em;
-    color: var(--gold);
+    color: var(--danger);
     text-transform: uppercase;
     margin-bottom: 24px;
     display: flex; align-items: center; gap: 12px;
@@ -99,36 +99,40 @@
   .hero-eyebrow::before {
     content: '';
     display: inline-block; width: 32px; height: 1px;
-    background: var(--gold);
+    background: var(--danger);
   }
   .hero h1 {
     font-family: var(--serif);
-    font-size: clamp(52px, 6vw, 88px);
+    font-size: clamp(44px, 5vw, 72px);
     font-weight: 500;
-    line-height: 1.05;
+    line-height: 1.1;
     color: var(--ink);
-    margin-bottom: 32px;
+    margin-bottom: 28px;
   }
   .hero h1 em {
     font-style: italic;
     color: var(--accent);
   }
   .hero-sub {
-    font-size: 17px;
+    font-size: 18px;
     color: var(--ink-muted);
-    max-width: 520px;
-    line-height: 1.7;
-    margin-bottom: 48px;
+    max-width: 560px;
+    line-height: 1.8;
+    margin-bottom: 40px;
     font-weight: 300;
   }
-  .hero-actions { display: flex; gap: 16px; align-items: center; }
+  .hero-sub strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
   .btn-primary {
     background: var(--accent);
     color: var(--paper);
-    padding: 14px 32px;
-    font-size: 13px;
+    padding: 16px 36px;
+    font-size: 14px;
     font-weight: 500;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.06em;
     text-decoration: none;
     border-radius: 2px;
     transition: background 0.2s;
@@ -145,25 +149,17 @@
   }
   .btn-ghost:hover { color: var(--ink); border-color: var(--ink); }
 
-  .hero-stat-row {
-    display: flex; gap: 48px; margin-top: 64px;
-    padding-top: 48px;
+  .hero-proof {
+    margin-top: 56px;
+    padding-top: 32px;
     border-top: 1px solid var(--border);
-  }
-  .hero-stat { }
-  .hero-stat-num {
-    font-family: var(--mono);
-    font-size: 32px;
-    font-weight: 300;
-    color: var(--accent);
-    display: block;
-    line-height: 1;
-    margin-bottom: 6px;
-  }
-  .hero-stat-label {
-    font-size: 12px;
+    font-size: 13px;
     color: var(--ink-faint);
-    letter-spacing: 0.06em;
+    line-height: 1.8;
+  }
+  .hero-proof strong {
+    color: var(--ink-muted);
+    font-weight: 500;
   }
 
   /* ── URGENCY BANNER ── */
@@ -197,9 +193,9 @@
   }
   .section-title {
     font-family: var(--serif);
-    font-size: clamp(36px, 4vw, 56px);
+    font-size: clamp(32px, 3.5vw, 48px);
     font-weight: 500;
-    line-height: 1.1;
+    line-height: 1.15;
     color: var(--ink);
     margin-bottom: 24px;
   }
@@ -211,110 +207,88 @@
     line-height: 1.7;
   }
 
-  /* ── PROBLEM ── */
-  .problem { background: var(--ink); }
-  .problem .section-title { color: var(--paper); }
-  .problem .section-sub { color: rgba(247,245,240,0.6); }
-  .problem .section-label { color: var(--gold); }
-  .problem-grid {
+  /* ── WHAT YOU GET ── */
+  .what-you-get { background: var(--paper-warm); }
+  .deliverables {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: rgba(255,255,255,0.08);
-    margin-top: 64px;
-    border: 1px solid rgba(255,255,255,0.08);
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+    margin-top: 48px;
   }
-  .problem-card {
-    background: var(--ink);
-    padding: 40px 36px;
+  .deliverable {
+    background: var(--paper);
+    padding: 36px;
   }
-  .problem-card-icon {
+  .deliverable-num {
     font-family: var(--mono);
     font-size: 11px;
     color: var(--gold);
     letter-spacing: 0.15em;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
     display: block;
   }
-  .problem-card h3 {
+  .deliverable h3 {
     font-family: var(--serif);
     font-size: 22px;
     font-weight: 500;
-    color: var(--paper);
-    margin-bottom: 12px;
+    margin-bottom: 10px;
+    color: var(--ink);
   }
-  .problem-card p {
-    font-size: 14px;
-    color: rgba(247,245,240,0.55);
-    line-height: 1.7;
-  }
-  .problem-fine {
-    font-family: var(--mono);
-    font-size: 28px;
-    color: #c84040;
-    margin-top: 24px;
-    display: block;
-  }
-
-  /* ── HOW IT WORKS ── */
-  .how { background: var(--paper-warm); }
-  .how-steps {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
-    margin-top: 64px;
-  }
-  .step {
-    background: var(--paper);
-    padding: 40px;
-    position: relative;
-  }
-  .step-num {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--gold);
-    letter-spacing: 0.15em;
-    margin-bottom: 24px;
-    display: block;
-  }
-  .step h3 {
-    font-family: var(--serif);
-    font-size: 24px;
-    font-weight: 500;
-    margin-bottom: 12px;
-  }
-  .step p {
+  .deliverable p {
     font-size: 14px;
     color: var(--ink-muted);
     line-height: 1.7;
   }
-  .step-auto {
-    display: inline-block;
-    margin-top: 20px;
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    color: var(--accent);
-    background: rgba(26,58,42,0.08);
-    padding: 4px 10px;
-    border-radius: 2px;
+
+  /* ── RISK SECTION ── */
+  .risk { background: var(--ink); }
+  .risk .section-title { color: var(--paper); }
+  .risk .section-sub { color: rgba(247,245,240,0.6); }
+  .risk .section-label { color: var(--gold); }
+  .risk-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.08);
+    margin-top: 48px;
+    border: 1px solid rgba(255,255,255,0.08);
   }
-  .step-manual {
-    display: inline-block;
-    margin-top: 20px;
+  .risk-card {
+    background: var(--ink);
+    padding: 36px;
+  }
+  .risk-card-label {
     font-family: var(--mono);
-    font-size: 10px;
+    font-size: 11px;
+    color: var(--gold);
     letter-spacing: 0.15em;
-    color: var(--warn);
-    background: rgba(122,92,30,0.08);
-    padding: 4px 10px;
-    border-radius: 2px;
+    margin-bottom: 16px;
+    display: block;
+  }
+  .risk-card h3 {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--paper);
+    margin-bottom: 10px;
+  }
+  .risk-card p {
+    font-size: 13px;
+    color: rgba(247,245,240,0.5);
+    line-height: 1.7;
+  }
+  .risk-fine {
+    font-family: var(--mono);
+    font-size: 24px;
+    color: #c84040;
+    margin-top: 20px;
+    display: block;
   }
 
   /* ── DEMO RAPPORT ── */
   .demo-section { background: var(--paper); }
   .demo-container {
-    margin-top: 64px;
+    margin-top: 48px;
     border: 1px solid var(--border);
     border-radius: 4px;
     overflow: hidden;
@@ -322,7 +296,7 @@
   }
   .demo-header {
     background: var(--ink);
-    padding: 16px 24px;
+    padding: 14px 24px;
     display: flex; align-items: center; gap: 8px;
   }
   .demo-dot { width: 10px; height: 10px; border-radius: 50%; }
@@ -335,34 +309,34 @@
   }
   .demo-body {
     display: grid;
-    grid-template-columns: 260px 1fr;
-    min-height: 560px;
+    grid-template-columns: 240px 1fr;
+    min-height: 500px;
   }
   .demo-sidebar {
     background: #f0ede6;
     border-right: 1px solid var(--border);
-    padding: 28px 24px;
+    padding: 24px 20px;
   }
   .demo-sidebar-logo {
     font-family: var(--serif);
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 600;
     color: var(--accent);
     letter-spacing: 0.08em;
-    margin-bottom: 32px;
+    margin-bottom: 28px;
     display: block;
   }
   .demo-sidebar-firm {
-    font-size: 12px;
+    font-size: 11px;
     color: var(--ink-faint);
     letter-spacing: 0.05em;
     margin-bottom: 4px;
   }
   .demo-sidebar-name {
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 500;
     color: var(--ink);
-    margin-bottom: 24px;
+    margin-bottom: 20px;
   }
   .demo-sidebar-meta {
     font-family: var(--mono);
@@ -371,8 +345,8 @@
     line-height: 2;
   }
   .demo-risk-badge {
-    margin-top: 28px;
-    padding: 16px;
+    margin-top: 24px;
+    padding: 14px;
     background: #fff0f0;
     border-left: 3px solid var(--danger);
     border-radius: 2px;
@@ -387,39 +361,39 @@
   }
   .demo-risk-level {
     font-family: var(--serif);
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 600;
     color: var(--danger);
   }
-  .demo-main { padding: 36px 40px; overflow-y: auto; }
+  .demo-main { padding: 32px 36px; overflow-y: auto; }
   .demo-section-title {
     font-family: var(--serif);
-    font-size: 26px;
+    font-size: 24px;
     font-weight: 500;
     color: var(--ink);
-    margin-bottom: 8px;
+    margin-bottom: 6px;
   }
   .demo-section-sub {
-    font-size: 13px;
+    font-size: 12px;
     color: var(--ink-faint);
-    margin-bottom: 28px;
+    margin-bottom: 24px;
     font-family: var(--mono);
     letter-spacing: 0.05em;
   }
   .gap-item {
     border: 1px solid var(--border);
     border-radius: 3px;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     overflow: hidden;
   }
   .gap-header {
-    padding: 14px 18px;
+    padding: 12px 16px;
     display: flex; align-items: center; justify-content: space-between;
     background: var(--paper);
     cursor: pointer;
   }
   .gap-title {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 500;
     color: var(--ink);
   }
@@ -433,18 +407,20 @@
   .sev-high { background: #fff0f0; color: var(--danger); }
   .sev-med { background: #fff8ec; color: var(--warn); }
   .gap-detail {
-    padding: 16px 18px;
+    padding: 14px 16px;
     background: #fafaf8;
     border-top: 1px solid var(--border);
     font-size: 13px;
     color: var(--ink-muted);
     line-height: 1.7;
+    display: none;
   }
+  .gap-item.open .gap-detail { display: block; }
   .gap-detail-row {
     display: grid;
-    grid-template-columns: 120px 1fr;
+    grid-template-columns: 110px 1fr;
     gap: 8px;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
   }
   .gap-detail-key {
     font-family: var(--mono);
@@ -454,19 +430,69 @@
     padding-top: 2px;
   }
   .gap-detail-val { font-size: 13px; color: var(--ink); }
+  .gap-header::after {
+    content: '+';
+    font-family: var(--mono);
+    font-size: 16px;
+    color: var(--ink-faint);
+  }
+  .gap-item.open .gap-header::after { content: '\2212'; }
 
-  /* ── PRICING ── */
-  .pricing { background: var(--paper-warm); }
-  .pricing-grid {
+  /* ── HOW ── */
+  .how { background: var(--paper-warm); }
+  .how-steps {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2px;
-    margin-top: 64px;
+    margin-top: 48px;
+  }
+  .step {
+    background: var(--paper);
+    padding: 36px;
+  }
+  .step-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+    margin-bottom: 20px;
+    display: block;
+  }
+  .step h3 {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+  .step p {
+    font-size: 14px;
+    color: var(--ink-muted);
+    line-height: 1.7;
+  }
+  .step-time {
+    display: inline-block;
+    margin-top: 16px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+    background: rgba(26,58,42,0.08);
+    padding: 4px 10px;
+    border-radius: 2px;
+  }
+
+  /* ── PRICING ── */
+  .pricing { background: var(--paper); }
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+    margin-top: 48px;
+    max-width: 800px;
   }
   .pricing-card {
-    background: var(--paper);
-    padding: 44px 36px;
-    position: relative;
+    background: var(--paper-warm);
+    padding: 40px 36px;
   }
   .pricing-card.featured {
     background: var(--accent);
@@ -477,13 +503,13 @@
     letter-spacing: 0.2em;
     color: var(--ink-faint);
     text-transform: uppercase;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
     display: block;
   }
   .pricing-card.featured .pricing-label { color: var(--gold); }
   .pricing-price {
     font-family: var(--serif);
-    font-size: 48px;
+    font-size: 44px;
     font-weight: 500;
     color: var(--ink);
     line-height: 1;
@@ -494,30 +520,30 @@
     font-family: var(--mono);
     font-size: 12px;
     color: var(--ink-faint);
-    margin-bottom: 32px;
+    margin-bottom: 28px;
     display: block;
   }
   .pricing-card.featured .pricing-period { color: rgba(247,245,240,0.5); }
   .pricing-features {
     list-style: none;
-    margin-bottom: 36px;
+    margin-bottom: 32px;
   }
   .pricing-features li {
     font-size: 13px;
     color: var(--ink-muted);
-    padding: 8px 0;
+    padding: 7px 0;
     border-bottom: 1px solid var(--border);
     display: flex; align-items: flex-start; gap: 10px;
   }
   .pricing-card.featured .pricing-features li { color: rgba(247,245,240,0.7); border-color: rgba(247,245,240,0.1); }
   .pricing-features li::before {
-    content: '—';
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--gold);
+    content: '\2713';
+    font-size: 12px;
+    color: var(--accent);
     flex-shrink: 0;
     margin-top: 1px;
   }
+  .pricing-card.featured .pricing-features li::before { color: var(--gold); }
   .pricing-btn {
     display: block;
     text-align: center;
@@ -541,21 +567,21 @@
   /* ── FOOTER CTA ── */
   .footer-cta {
     background: var(--ink);
-    padding: 96px 48px;
+    padding: 80px 48px;
     text-align: center;
   }
   .footer-cta .section-title { color: var(--paper); margin-bottom: 16px; }
-  .footer-cta .section-sub { color: rgba(247,245,240,0.5); margin: 0 auto 48px; }
+  .footer-cta .section-sub { color: rgba(247,245,240,0.5); margin: 0 auto 40px; }
   .footer-cta-sub {
     font-family: var(--mono);
     font-size: 12px;
     color: rgba(247,245,240,0.3);
-    margin-top: 24px;
+    margin-top: 20px;
     letter-spacing: 0.06em;
   }
   footer {
     background: #080807;
-    padding: 28px 48px;
+    padding: 24px 48px;
     display: flex; justify-content: space-between; align-items: center;
   }
   footer span {
@@ -577,33 +603,18 @@
   .hero h1 { animation-delay: 0.2s; }
   .hero-sub { animation-delay: 0.3s; }
   .hero-actions { animation-delay: 0.4s; }
-  .hero-stat-row { animation-delay: 0.5s; }
+  .hero-proof { animation-delay: 0.5s; }
 
-  /* countdown */
   #countdown { font-variant-numeric: tabular-nums; }
-
-  /* gap toggle */
-  .gap-detail { display: none; }
-  .gap-item.open .gap-detail { display: block; }
-  .gap-header::after {
-    content: '+';
-    font-family: var(--mono);
-    font-size: 16px;
-    color: var(--ink-faint);
-    transition: transform 0.2s;
-  }
-  .gap-item.open .gap-header::after {
-    content: '−';
-  }
 
   @media (max-width: 768px) {
     nav { padding: 16px 24px; }
     .nav-links { display: none; }
     section { padding: 64px 24px; }
     .hero { padding: 100px 24px 60px; }
-    .problem-grid, .how-steps, .pricing-grid { grid-template-columns: 1fr; }
+    .risk-grid, .how-steps { grid-template-columns: 1fr; }
+    .deliverables, .pricing-grid { grid-template-columns: 1fr; }
     .demo-body { grid-template-columns: 1fr; }
-    .hero-stat-row { gap: 24px; flex-wrap: wrap; }
     .urgency { flex-direction: column; gap: 8px; text-align: center; }
   }
 </style>
@@ -613,113 +624,109 @@
 <nav>
   <div class="nav-logo">L<span>.</span>OVA</div>
   <div class="nav-links">
-    <a href="#how">Hvordan det fungerer</a>
-    <a href="#demo">Demo</a>
-    <a href="#pricing">Priser</a>
-    <a href="mailto:kontakt@getlova.no" class="nav-cta">Book samtale</a>
+    <a href="#hva-du-far">Hva du får</a>
+    <a href="#demo">Eksempelrapport</a>
+    <a href="#pris">Pris</a>
+    <a href="mailto:kontakt@getlova.no" class="nav-cta">Gratis kartlegging</a>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-content">
-    <div class="hero-eyebrow">Compliance Intelligence for norske SMBer</div>
-    <h1>Dere er <em>ikke</em><br>klare for NIS2.</h1>
-    <p class="hero-sub">De fleste regnskaps- og advokatfirmaer i Norge vet ikke hva de mangler. Lova kartlegger det — og sørger for at dere er i orden før fristen.</p>
+    <div class="hero-eyebrow"><span id="days-left"></span> dager til NIS2-fristen</div>
+    <h1>Vi viser deg <em>nøyaktig</em> hva du mangler — på 20 minutter.</h1>
+    <p class="hero-sub">
+      Fra 1. juli 2026 kan Datatilsynet kreve dokumentasjon du sannsynligvis ikke har.
+      <strong>Behandlingsprotokoll. Risikovurdering. Hendelseshåndtering.</strong>
+      Vi sjekker hva som mangler hos deg — gratis, uforpliktende, ferdig på en kaffekopp.
+    </p>
     <div class="hero-actions">
-      <a href="mailto:kontakt@getlova.no" class="btn-primary">Book gratis kartlegging</a>
-      <a href="#demo" class="btn-ghost">Se eksempelrapport</a>
+      <a href="mailto:kontakt@getlova.no?subject=Gratis kartlegging" class="btn-primary">Book 20-minutters kartlegging</a>
+      <a href="#demo" class="btn-ghost">Se hva rapporten inneholder</a>
     </div>
-    <div class="hero-stat-row">
-      <div class="hero-stat">
-        <span class="hero-stat-num" id="days-left">100</span>
-        <span class="hero-stat-label">dager til fristen</span>
-      </div>
-      <div class="hero-stat">
-        <span class="hero-stat-num">10M</span>
-        <span class="hero-stat-label">maks bot i kroner</span>
-      </div>
-      <div class="hero-stat">
-        <span class="hero-stat-num">5 000</span>
-        <span class="hero-stat-label">norske firmaer berørt</span>
-      </div>
+    <div class="hero-proof">
+      <strong>Hvem er dette for?</strong> Regnskapsførere, advokater og rådgivere med 5-50 ansatte
+      som behandler personopplysninger og ikke har sjekket om de er klare for NIS2 og oppdatert GDPR.
     </div>
   </div>
 </section>
 
 <!-- URGENCY -->
 <div class="urgency">
-  <span class="urgency-text">DIGITALSIKKERHETSLOVEN — IKRAFTTREDELSE</span>
-  <span class="urgency-countdown" id="countdown">Laster...</span>
+  <span class="urgency-text">NIS2 / DIGITALSIKKERHETSLOVEN TRER I KRAFT</span>
+  <span class="urgency-countdown" id="countdown"></span>
   <span class="urgency-text">01. JULI 2026</span>
 </div>
 
-<!-- PROBLEM -->
-<section class="problem" id="problem">
-  <div class="section-label">Problemet</div>
-  <h2 class="section-title">Tre ting Datatilsynet<br>spør om først.</h2>
-  <p class="section-sub">Ved tilsyn etterspørres disse dokumentene umiddelbart. De fleste firmaer har ingen av dem.</p>
-  <div class="problem-grid">
-    <div class="problem-card">
-      <span class="problem-card-icon">01 — GDPR ART. 30</span>
-      <h3>Behandlingsprotokoll</h3>
-      <p>Oversikt over all behandling av personopplysninger. Obligatorisk for alle med 250+ behandlingsaktiviteter — eller færre i regulert bransje.</p>
-      <span class="problem-fine">Bot: inntil 20M €</span>
+<!-- WHAT YOU GET -->
+<section class="what-you-get" id="hva-du-far">
+  <div class="section-label">Hva du faktisk får</div>
+  <h2 class="section-title">Ikke rådgivning. Ikke en sjekkliste.<br>En ferdig rapport du kan handle på.</h2>
+  <p class="section-sub">Etter 20 minutter med oss mottar du en rapport som viser nøyaktig hva som mangler, hvem som bør fikse det, og hvor lang tid det tar.</p>
+  <div class="deliverables">
+    <div class="deliverable">
+      <span class="deliverable-num">01</span>
+      <h3>Liste over hva som mangler</h3>
+      <p>Konkrete gap i GDPR- og NIS2-etterlevelsen din. Ikke generelle anbefalinger — spesifikke mangler basert på din bransje og størrelse.</p>
     </div>
-    <div class="problem-card">
-      <span class="problem-card-icon">02 — NIS2 ART. 21</span>
-      <h3>Risikovurdering</h3>
-      <p>Dokumentert vurdering av cybersikkerhetsrisiko. Påkrevd for alle virksomheter under Digitalsikkerhetsloven fra juli 2026.</p>
-      <span class="problem-fine">Bot: inntil 10M €</span>
+    <div class="deliverable">
+      <span class="deliverable-num">02</span>
+      <h3>Tiltak med navn og timer</h3>
+      <p>For hvert gap: hva som må gjøres, hvem som er ansvarlig (daglig leder, IT, ekstern), og estimert tidsbruk i timer.</p>
     </div>
-    <div class="problem-card">
-      <span class="problem-card-icon">03 — NIS2 ART. 23</span>
-      <h3>Hendelseshåndtering</h3>
-      <p>Prosedyre for å varsle NSM innen 24 timer ved sikkerhetshendelse. Mangler dette — kan daglig leder holdes personlig ansvarlig.</p>
-      <span class="problem-fine">Personlig ansvar</span>
+    <div class="deliverable">
+      <span class="deliverable-num">03</span>
+      <h3>Konsekvenser hvis du ikke gjør det</h3>
+      <p>Hva som faktisk skjer ved tilsyn. Ikke skremsler — konkrete bøtesatser og personlig ansvar per mangel.</p>
+    </div>
+    <div class="deliverable">
+      <span class="deliverable-num">04</span>
+      <h3>Prioritert rekkefølge</h3>
+      <p>Hva du bør fikse først, og hva som kan vente. Slik at du bruker tid og penger på det som faktisk betyr noe.</p>
     </div>
   </div>
 </section>
 
-<!-- HOW -->
-<section class="how" id="how">
-  <div class="section-label">Prosessen</div>
-  <h2 class="section-title">Fra kartlegging<br>til kontinuerlig trygghet.</h2>
-  <p class="section-sub">En samtale. Resten skjer automatisk.</p>
-  <div class="how-steps">
-    <div class="step">
-      <span class="step-num">STEG 01</span>
-      <h3>20 minutters samtale</h3>
-      <p>Vi gjennomgår virksomhetens profil, bransje og eksisterende dokumentasjon. Ingen forberedelse nødvendig.</p>
-      <span class="step-manual">Din tid: 20 min</span>
+<!-- RISK -->
+<section class="risk">
+  <div class="section-label">Hvorfor det haster</div>
+  <h2 class="section-title">Tre dokumenter Datatilsynet<br>spør om først ved tilsyn.</h2>
+  <p class="section-sub">De fleste firmaer i din bransje har ingen av dem. Det er ikke et spørsmål om de kommer — det er et spørsmål om når.</p>
+  <div class="risk-grid">
+    <div class="risk-card">
+      <span class="risk-card-label">GDPR ART. 30</span>
+      <h3>Behandlingsprotokoll</h3>
+      <p>Oversikt over all behandling av personopplysninger. Påkrevd for alle i regulert bransje. Første dokumentet som etterspørres.</p>
+      <span class="risk-fine">Inntil 20M EUR</span>
     </div>
-    <div class="step">
-      <span class="step-num">STEG 02</span>
-      <h3>Gap-analyse og rapport</h3>
-      <p>Lova kartlegger 47 kontrollpunkter og leverer en strukturert rapport med konkrete tiltak, ansvar og tidsestimater.</p>
-      <span class="step-auto">Automatisert</span>
+    <div class="risk-card">
+      <span class="risk-card-label">NIS2 ART. 21</span>
+      <h3>Risikovurdering</h3>
+      <p>Dokumentert vurdering av cybersikkerhetsrisiko. Nytt krav fra 1. juli 2026. De fleste har ikke begynt.</p>
+      <span class="risk-fine">Inntil 10M EUR</span>
     </div>
-    <div class="step">
-      <span class="step-num">STEG 03</span>
-      <h3>Løpende overvåking</h3>
-      <p>Daglig sjekk av endringer i styret, nye Datatilsynet-vedtak relevant for bransjen, og NIS2-fristpåminnelser.</p>
-      <span class="step-auto">Automatisert — nattlig</span>
+    <div class="risk-card">
+      <span class="risk-card-label">NIS2 ART. 23</span>
+      <h3>Hendelseshåndtering</h3>
+      <p>Prosedyre for varsling innen 24 timer. Mangler du dette kan daglig leder holdes personlig ansvarlig.</p>
+      <span class="risk-fine">Personlig ansvar</span>
     </div>
   </div>
 </section>
 
 <!-- DEMO -->
 <section class="demo-section" id="demo">
-  <div class="section-label">Eksempelrapport</div>
-  <h2 class="section-title">Dette er hva dere mottar.</h2>
-  <p class="section-sub">Ikke en generisk sjekkliste. En rapport tilpasset deres bransje, størrelse og profil.</p>
+  <div class="section-label">Eksempel</div>
+  <h2 class="section-title">Slik ser rapporten ut.</h2>
+  <p class="section-sub">Dette er et reelt eksempel for et revisjonsfirma i Bergen. Klikk på hvert funn for detaljer.</p>
 
   <div class="demo-container">
     <div class="demo-header">
       <div class="demo-dot" style="background:#ff5f57"></div>
       <div class="demo-dot" style="background:#febc2e; margin-left:6px"></div>
       <div class="demo-dot" style="background:#28c840; margin-left:6px"></div>
-      <span class="demo-title">LOVA — Gap-analyse — Bjørgvin Revisjon AS — 24.03.2026</span>
+      <span class="demo-title">LOVA — Gap-analyse — Bjørgvin Revisjon AS</span>
     </div>
     <div class="demo-body">
       <div class="demo-sidebar">
@@ -730,9 +737,7 @@
           Org.nr: 888 976 272<br>
           Bransje: Revisjon<br>
           Ansatte: 20<br>
-          Sted: Bergen<br>
-          Dato: 24.03.2026<br>
-          Versjon: 1.0
+          Sted: Bergen
         </div>
         <div class="demo-risk-badge">
           <span class="demo-risk-label">RISIKONIVÅ</span>
@@ -740,8 +745,8 @@
         </div>
       </div>
       <div class="demo-main">
-        <div class="demo-section-title">Gap-analyse</div>
-        <div class="demo-section-sub">GDPR · NIS2 · ISO 27001 — 5 kritiske funn</div>
+        <div class="demo-section-title">Funn</div>
+        <div class="demo-section-sub">5 mangler identifisert — 3 kritiske</div>
 
         <div class="gap-item open">
           <div class="gap-header" onclick="this.parentElement.classList.toggle('open')">
@@ -750,8 +755,8 @@
           </div>
           <div class="gap-detail">
             <div class="gap-detail-row">
-              <span class="gap-detail-key">Grunnlag</span>
-              <span class="gap-detail-val">GDPR artikkel 30 — obligatorisk for alle virksomheter i regulert bransje</span>
+              <span class="gap-detail-key">Mangel</span>
+              <span class="gap-detail-val">Ingen dokumentert oversikt over behandlingsaktiviteter</span>
             </div>
             <div class="gap-detail-row">
               <span class="gap-detail-key">Tiltak</span>
@@ -763,11 +768,11 @@
             </div>
             <div class="gap-detail-row">
               <span class="gap-detail-key">Tidsbruk</span>
-              <span class="gap-detail-val">3–4 timer</span>
+              <span class="gap-detail-val">3-4 timer</span>
             </div>
             <div class="gap-detail-row">
               <span class="gap-detail-key">Konsekvens</span>
-              <span class="gap-detail-val">Første dokument Datatilsynet etterspør ved tilsyn. Bot inntil 20M € ved gjentatt brudd.</span>
+              <span class="gap-detail-val">Første punkt ved tilsyn. Bot inntil 20M EUR.</span>
             </div>
           </div>
         </div>
@@ -779,12 +784,12 @@
           </div>
           <div class="gap-detail">
             <div class="gap-detail-row">
-              <span class="gap-detail-key">Grunnlag</span>
-              <span class="gap-detail-val">NIS2 artikkel 21 — Digitalsikkerhetsloven §14, ikrafttredelse 01.07.2026</span>
+              <span class="gap-detail-key">Mangel</span>
+              <span class="gap-detail-val">Ingen formell risikovurdering etter NSMs grunnprinsipper</span>
             </div>
             <div class="gap-detail-row">
               <span class="gap-detail-key">Tiltak</span>
-              <span class="gap-detail-val">Gjennomfør strukturert risikovurdering etter NSMs grunnprinsipper og dokumenter funn</span>
+              <span class="gap-detail-val">Gjennomfør strukturert risikovurdering og dokumenter funn</span>
             </div>
             <div class="gap-detail-row">
               <span class="gap-detail-key">Ansvarlig</span>
@@ -792,11 +797,11 @@
             </div>
             <div class="gap-detail-row">
               <span class="gap-detail-key">Tidsbruk</span>
-              <span class="gap-detail-val">6–8 timer</span>
+              <span class="gap-detail-val">6-8 timer</span>
             </div>
             <div class="gap-detail-row">
               <span class="gap-detail-key">Konsekvens</span>
-              <span class="gap-detail-val">Påkrevd fra 1. juli. Bot inntil 10M € eller 2% av global omsetning.</span>
+              <span class="gap-detail-val">Påkrevd fra 1. juli 2026. Bot inntil 10M EUR.</span>
             </div>
           </div>
         </div>
@@ -808,12 +813,12 @@
           </div>
           <div class="gap-detail">
             <div class="gap-detail-row">
-              <span class="gap-detail-key">Grunnlag</span>
-              <span class="gap-detail-val">NIS2 artikkel 23 — varsling til NSM innen 24 timer ved sikkerhetshendelse</span>
+              <span class="gap-detail-key">Mangel</span>
+              <span class="gap-detail-val">Ingen prosess for varsling ved sikkerhetshendelser</span>
             </div>
             <div class="gap-detail-row">
               <span class="gap-detail-key">Tiltak</span>
-              <span class="gap-detail-val">Utarbeid skriftlig prosedyre med varslingskjede og kontaktpunkter</span>
+              <span class="gap-detail-val">Lag hendelseshåndteringsplan med varslingskjede</span>
             </div>
             <div class="gap-detail-row">
               <span class="gap-detail-key">Ansvarlig</span>
@@ -821,28 +826,24 @@
             </div>
             <div class="gap-detail-row">
               <span class="gap-detail-key">Tidsbruk</span>
-              <span class="gap-detail-val">2–3 timer</span>
+              <span class="gap-detail-val">2-3 timer</span>
             </div>
             <div class="gap-detail-row">
               <span class="gap-detail-key">Konsekvens</span>
-              <span class="gap-detail-val">Daglig leder kan holdes personlig ansvarlig. Midlertidig forbud mot lederverv.</span>
+              <span class="gap-detail-val">Personlig ansvar for daglig leder. Forbud mot lederverv.</span>
             </div>
           </div>
         </div>
 
         <div class="gap-item">
           <div class="gap-header" onclick="this.parentElement.classList.toggle('open')">
-            <span class="gap-title">Databehandleravtaler ikke oppdatert</span>
+            <span class="gap-title">Databehandleravtaler utdaterte</span>
             <span class="gap-severity sev-med">VIKTIG</span>
           </div>
           <div class="gap-detail">
             <div class="gap-detail-row">
-              <span class="gap-detail-key">Grunnlag</span>
-              <span class="gap-detail-val">GDPR artikkel 28 — påkrevd for alle tredjeparter som behandler data på deres vegne</span>
-            </div>
-            <div class="gap-detail-row">
               <span class="gap-detail-key">Tiltak</span>
-              <span class="gap-detail-val">Kartlegg alle leverandører (regnskapssystem, sky-tjenester, e-post) og inngå oppdaterte DPA-er</span>
+              <span class="gap-detail-val">Kartlegg leverandører og oppdater DPA-er</span>
             </div>
             <div class="gap-detail-row">
               <span class="gap-detail-key">Ansvarlig</span>
@@ -850,24 +851,20 @@
             </div>
             <div class="gap-detail-row">
               <span class="gap-detail-key">Tidsbruk</span>
-              <span class="gap-detail-val">4–6 timer</span>
+              <span class="gap-detail-val">4-6 timer</span>
             </div>
           </div>
         </div>
 
         <div class="gap-item">
           <div class="gap-header" onclick="this.parentElement.classList.toggle('open')">
-            <span class="gap-title">Mangler DPO-vurdering</span>
+            <span class="gap-title">DPO-vurdering ikke gjennomført</span>
             <span class="gap-severity sev-med">VIKTIG</span>
           </div>
           <div class="gap-detail">
             <div class="gap-detail-row">
-              <span class="gap-detail-key">Grunnlag</span>
-              <span class="gap-detail-val">GDPR artikkel 37 — firmaer som regelmessig behandler sensitiv finansdata bør vurdere DPO</span>
-            </div>
-            <div class="gap-detail-row">
               <span class="gap-detail-key">Tiltak</span>
-              <span class="gap-detail-val">Gjennomfør DPO-vurdering og dokumenter konklusjonen skriftlig</span>
+              <span class="gap-detail-val">Gjennomfør og dokumenter DPO-vurdering</span>
             </div>
             <div class="gap-detail-row">
               <span class="gap-detail-key">Ansvarlig</span>
@@ -875,80 +872,88 @@
             </div>
             <div class="gap-detail-row">
               <span class="gap-detail-key">Tidsbruk</span>
-              <span class="gap-detail-val">1–2 timer</span>
+              <span class="gap-detail-val">1-2 timer</span>
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </div>
 </section>
 
+<!-- HOW -->
+<section class="how" id="hvordan">
+  <div class="section-label">Prosessen</div>
+  <h2 class="section-title">Tre steg. Ferdig på en uke.</h2>
+  <div class="how-steps">
+    <div class="step">
+      <span class="step-num">01</span>
+      <h3>20 min samtale</h3>
+      <p>Du forteller oss om firmaet. Vi stiller 10 spørsmål. Ingen forberedelse nødvendig.</p>
+      <span class="step-time">20 minutter</span>
+    </div>
+    <div class="step">
+      <span class="step-num">02</span>
+      <h3>Rapport innen 48 timer</h3>
+      <p>Du mottar en rapport som den over — med mangler, tiltak, ansvarlig og tidsbruk. Klar til å handle på.</p>
+      <span class="step-time">48 timer</span>
+    </div>
+    <div class="step">
+      <span class="step-num">03</span>
+      <h3>30 min gjennomgang</h3>
+      <p>Vi går gjennom rapporten sammen. Du stiller spørsmål. Vi prioriterer sammen hva du bør gjøre først.</p>
+      <span class="step-time">30 minutter</span>
+    </div>
+  </div>
+</section>
+
 <!-- PRICING -->
-<section class="pricing" id="pricing">
-  <div class="section-label">Priser</div>
-  <h2 class="section-title">Rimelig. Løpende.<br>Ingen overraskelser.</h2>
-  <p class="section-sub">Tradisjonelle konsulenter tar 100–300 000 kr per prosjekt. Lova koster det samme som en time hos advokaten.</p>
+<section class="pricing" id="pris">
+  <div class="section-label">Pris</div>
+  <h2 class="section-title">Koster mindre enn en time<br>hos advokaten din.</h2>
   <div class="pricing-grid">
     <div class="pricing-card">
-      <span class="pricing-label">Gap-analyse</span>
-      <div class="pricing-price">9 900</div>
-      <span class="pricing-period">kr — engangs</span>
+      <span class="pricing-label">Kartlegging</span>
+      <div class="pricing-price">Gratis</div>
+      <span class="pricing-period">de 10 første firmaene</span>
       <ul class="pricing-features">
-        <li>GDPR/NIS2-kartlegging</li>
-        <li>47 kontrollpunkter</li>
-        <li>Profesjonell PDF-rapport</li>
-        <li>Konkrete handlingspunkter</li>
-        <li>30-minutters gjennomgang</li>
+        <li>20 min samtale</li>
+        <li>GDPR/NIS2 gap-analyse</li>
+        <li>PDF-rapport med tiltak</li>
+        <li>30 min gjennomgang</li>
       </ul>
-      <a href="mailto:kontakt@getlova.no" class="pricing-btn">Kom i gang</a>
+      <a href="mailto:kontakt@getlova.no?subject=Gratis kartlegging" class="pricing-btn">Book gratis kartlegging</a>
     </div>
     <div class="pricing-card featured">
-      <span class="pricing-label">Lova Pro</span>
+      <span class="pricing-label">Løpende oppfølging</span>
       <div class="pricing-price">4 900</div>
-      <span class="pricing-period">kr / måned</span>
+      <span class="pricing-period">kr / måned — etter kartlegging</span>
       <ul class="pricing-features">
-        <li>Alt i Basis</li>
+        <li>Daglig overvåking av endringer</li>
         <li>Kvartalsvis risikovurdering</li>
-        <li>Behandlingsprotokoll</li>
-        <li>Hendelseshåndteringsprosedyre</li>
+        <li>Oppdatert dokumentasjon</li>
+        <li>Varsler ved nye krav</li>
         <li>Prioritert støtte</li>
       </ul>
-      <a href="mailto:kontakt@getlova.no" class="pricing-btn">Book samtale</a>
-    </div>
-    <div class="pricing-card">
-      <span class="pricing-label">Lova Basis</span>
-      <div class="pricing-price">2 900</div>
-      <span class="pricing-period">kr / måned</span>
-      <ul class="pricing-features">
-        <li>Månedlig overvåking</li>
-        <li>Datatilsynet-varsler</li>
-        <li>NIS2-fristpåminnelser</li>
-        <li>Styringsendringer</li>
-        <li>Månedlig statusrapport</li>
-      </ul>
-      <a href="mailto:kontakt@getlova.no" class="pricing-btn">Kom i gang</a>
+      <a href="mailto:kontakt@getlova.no?subject=Løpende oppfølging" class="pricing-btn">Snakk med oss</a>
     </div>
   </div>
 </section>
 
 <!-- FOOTER CTA -->
 <section class="footer-cta">
-  <div class="section-label" style="color: var(--gold); text-align:center">Neste steg</div>
-  <h2 class="section-title">20 minutter.<br>Full oversikt.</h2>
-  <p class="section-sub">Vi viser dere konkret hva som mangler — uten forpliktelse. Ikke et salgsargument. En kartlegging.</p>
-  <a href="mailto:kontakt@getlova.no" class="btn-primary">Book gratis kartlegging</a>
-  <p class="footer-cta-sub">Tilbud om gratis kartlegging gjelder de 10 første firmaene som melder interesse.</p>
+  <h2 class="section-title">Du vet ikke hva du mangler.<br>Det er hele poenget.</h2>
+  <p class="section-sub">20 minutter. Gratis. Du får en rapport uansett om du blir kunde eller ikke.</p>
+  <a href="mailto:kontakt@getlova.no?subject=Gratis kartlegging" class="btn-primary" style="margin-top: 8px;">Book kartlegging</a>
+  <p class="footer-cta-sub">Gjelder de 10 første firmaene som melder interesse.</p>
 </section>
 
 <footer>
-  <span>LOVA COMPLIANCE — ORG.NR UNDER REGISTRERING</span>
+  <span>LOVA</span>
   <span>kontakt@getlova.no</span>
 </footer>
 
 <script>
-// Countdown
 function updateCountdown() {
   const target = new Date('2026-07-01T00:00:00');
   const now = new Date();
