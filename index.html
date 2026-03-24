@@ -634,7 +634,7 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-content">
-    <div class="hero-eyebrow"><span id="days-left"></span> dager til NIS2-fristen</div>
+    <div class="hero-eyebrow"><span id="days-left">98</span> dager til NIS2-fristen</div>
     <h1>Vi viser deg <em>nøyaktig</em> hva du mangler — på 20 minutter.</h1>
     <p class="hero-sub">
       Fra 1. juli 2026 kan Datatilsynet kreve dokumentasjon du sannsynligvis ikke har.
@@ -655,7 +655,7 @@
 <!-- URGENCY -->
 <div class="urgency">
   <span class="urgency-text">NIS2 / DIGITALSIKKERHETSLOVEN TRER I KRAFT</span>
-  <span class="urgency-countdown" id="countdown"></span>
+  <span class="urgency-countdown" id="countdown">98D 00T 00M</span>
   <span class="urgency-text">01. JULI 2026</span>
 </div>
 
@@ -954,19 +954,25 @@
 </footer>
 
 <script>
-function updateCountdown() {
-  const target = new Date('2026-07-01T00:00:00');
-  const now = new Date();
-  const diff = target - now;
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-  document.getElementById('countdown').textContent =
-    `${days}D ${String(hours).padStart(2,'0')}T ${String(mins).padStart(2,'0')}M`;
-  document.getElementById('days-left').textContent = days;
-}
-updateCountdown();
-setInterval(updateCountdown, 60000);
+(function() {
+  try {
+    function updateCountdown() {
+      var target = new Date('2026-07-01T00:00:00');
+      var now = new Date();
+      var diff = target - now;
+      if (diff <= 0) { diff = 0; }
+      var days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      var cd = document.getElementById('countdown');
+      var dl = document.getElementById('days-left');
+      if (cd) { cd.textContent = days + 'D ' + String(hours).padStart(2,'0') + 'T ' + String(mins).padStart(2,'0') + 'M'; }
+      if (dl) { dl.textContent = days; }
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 60000);
+  } catch(e) {}
+})();
 </script>
 
 </body>
